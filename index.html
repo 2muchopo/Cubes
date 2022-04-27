@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cube</title>
+    </head>
+    <style>
+        .container {
+            width: 500px;
+            height: 500px;
+            background-color: lightblue;
+            border: 2px solid red;
+            margin: 50px auto;
+            display: grid;
+            place-items: center;
+            position: relative;
+            perspective: 350px;
+            perspective-origin:-2rem top;
+            animation:  10s ease-in-out infinite both;
+            color: white;
+        }
+
+        .front,
+        .back,
+        .left,
+        .right,
+        .top,
+        .bottom {
+            width: 150px;
+            height: 150px;
+            border: 2px solid black;
+            display: grid;
+            place-content: center;
+            font-size: 24px;
+
+        }
+        .back {
+            position: absolute;
+            background-color: rgb(243, 28, 64);
+            transform: translateZ(-75px);
+            transform-style: preserve-3d;
+
+        }
+        .top {
+            position: absolute;
+            background-color: red;
+            transform: rotateX(90deg) translateZ(75px);
+            transform-style: preserve-3d;
+        }
+        .bottom {
+            position: absolute;
+
+            transform: rotateX(90deg) translateZ(-75px);
+            background-color: blue;
+            transform-style: preserve-3d;
+        }
+        .right {
+            position: absolute;
+            background-color: purple;
+            transform: rotateY(90deg) translateZ(75px) ;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+
+        }
+        .left {
+            background-color: whitesmoke;
+            position: absolute;
+            transform: rotateY(270deg) translateZ(75px) ;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            color: black;
+
+        }
+        .front {
+            position: absolute;
+            background-color: coral;
+    
+            transform-style: preserve-3d;
+            
+            transform: translateZ(75px);
+            z-index: 1;
+            
+        }
+
+        @keyframes cube{
+            0%{perspective-origin: top left}
+            11%{perspective-origin: left;}
+            25%{perspective-origin: bottom left;}
+            36%{perspective-origin: bottom;}
+            47%{perspective-origin:bottom right;}
+            56%{perspective-origin: right;}
+            70%{perspective-origin: top right;}
+            80%{perspective-origin: top;}
+            90%{perspective-origin: top left;}
+            100%{perspective-origin: left;}
+            
+        }
+        
+    </style>
+    <body>
+        <div class="container">
+            <div class="front">FRONT</div>
+            <div class="back">BACK</div>
+            <div class="top">TOP</div>
+            <div class="bottom">BOTTOM</div>
+            <div class="right">RIGHT</div>
+            <div class="left">LEFT</div>
+        </div>
+
+    </body>
+</html>
